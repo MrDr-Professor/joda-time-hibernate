@@ -300,26 +300,20 @@
           <version>${maven-toolchains-plugin.version}</version>
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>buildnumber-maven-plugin</artifactId>
-          <version>1.4</version>
-          <configuration>
-            <format>At {1,time} on {1,date}, there was {2} on planet {0,number,integer}.</format>
-            <items>
-              <item implementation="java.lang.Integer">7</item>
-              <item>timestamp</item>
-              <item>a disturbance in the Force</item>
-            </items>
-          </configuration>
-          <executions>
-            <execution>
-              <phase>validate</phase>
-              <goals>
-                <goal>create</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Implementation-Build>$\{buildNumber}</Implementation-Build>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
       </plugins>
     </pluginManagement>
   </build>
