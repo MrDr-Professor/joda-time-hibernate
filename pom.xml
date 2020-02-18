@@ -91,6 +91,10 @@
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
             </manifest>
+            <manifestEntries>
+              <Implementation-Build>${buildNumber}</Implementation-Build>
+              <version-number>${project.version}</version-number>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>
