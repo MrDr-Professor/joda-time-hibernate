@@ -414,16 +414,26 @@
         </reportSets>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>${maven-jxr-plugin.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>jxr</report>
-            </reports>
-          </reportSet>
-        </reportSets>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <format>{0}, {1,date,yyyy-MM-dd HH:mm:ss}</format>
+          <items>
+            <item>scmVersion</item>
+            <item>timestamp</item>
+          </items>
+          <doCheck>true</doCheck>
+          <doUpdate>true</doUpdate>
+        </configuration>
       </plugin>
     </plugins>
   </reporting>
